@@ -12,4 +12,31 @@
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/likeImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:adjustViewBounds="true"
+        android:padding="15dp"
+        android:layout_margin="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_heart_thin_icon"
+        android:background="@drawable/shape_rectangle_stroke_r6"/>
+
+    <TextView
+        android:id="@+id/buyTextView"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="@string/buy"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_margin="15dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/likeImageView"
+        android:background="@drawable/shape_rectangle_solid_r6"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
