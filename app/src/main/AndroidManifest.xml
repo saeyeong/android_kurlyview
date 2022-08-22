@@ -15,7 +15,10 @@
         android:theme="@style/Theme.Kurlyview"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.DetailActivity"
+            android:name=".presentation.media.MediaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.detail.DetailActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
