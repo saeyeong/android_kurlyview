@@ -1,4 +1,4 @@
-package com.example.kurlyview.data.response
+package com.example.kurlyview.data.source.response
 
 
 data class RecipeDto(
