@@ -1,4 +1,4 @@
-package com.example.kurlyview.utils
+package com.example.kurlyview.presentation.utils
 
 import android.content.Context
 import android.util.TypedValue

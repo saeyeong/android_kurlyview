@@ -1,12 +1,12 @@
-package com.example.kurlyview.view
+package com.example.kurlyview.presentation.view
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.kurlyview.HelpFragment
-import com.example.kurlyview.InfoFragment
-import com.example.kurlyview.ProductFragment
-import com.example.kurlyview.ReviewFragment
+import com.example.kurlyview.presentation.HelpFragment
+import com.example.kurlyview.presentation.InfoFragment
+import com.example.kurlyview.presentation.ProductFragment
+import com.example.kurlyview.presentation.ReviewFragment
 
 class DetailPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity) {
     companion object {
