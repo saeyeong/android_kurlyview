@@ -1,9 +1,10 @@
-package com.example.kurlyview.presentation
+package com.example.kurlyview.presentation.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.example.kurlyview.databinding.ActivityDetailBinding
-import com.example.kurlyview.presentation.view.DetailPagerAdapter
+import com.example.kurlyview.presentation.base.BaseActivity
+import com.example.kurlyview.presentation.detail.view.DetailPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

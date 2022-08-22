@@ -1,4 +1,4 @@
-package com.example.kurlyview.presentation
+package com.example.kurlyview.presentation.base
 
 import android.os.Bundle
 import androidx.annotation.CallSuper
