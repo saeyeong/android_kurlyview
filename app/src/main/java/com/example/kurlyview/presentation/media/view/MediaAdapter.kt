@@ -4,15 +4,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kurlyview.domain.MediaReview
+import com.example.kurlyview.domain.Media
 
-class MediaAdapter: ListAdapter<MediaReview, MediaAdapter.MediaViewHolder>(
-    object : DiffUtil.ItemCallback<MediaReview>() {
-        override fun areItemsTheSame(oldItem: MediaReview, newItem: MediaReview): Boolean {
-            return oldItem.content.photoUrl == newItem.content.photoUrl
+class MediaAdapter: ListAdapter<Media, MediaAdapter.MediaViewHolder>(
+    object : DiffUtil.ItemCallback<Media>() {
+        override fun areItemsTheSame(oldItem: Media, newItem: Media): Boolean {
+            return oldItem.photoUrl == newItem.photoUrl
         }
 
-        override fun areContentsTheSame(oldItem: MediaReview, newItem: MediaReview): Boolean {
+        override fun areContentsTheSame(oldItem: Media, newItem: Media): Boolean {
             return oldItem == newItem
         }
 
@@ -28,9 +28,9 @@ class MediaAdapter: ListAdapter<MediaReview, MediaAdapter.MediaViewHolder>(
     }
 
     class MediaViewHolder(private val mediaView: MediaView): RecyclerView.ViewHolder(mediaView) {
-        fun onBind(mediaReview: MediaReview) {
-            mediaView.loadImage(mediaReview.content.photoUrl)
-            mediaView.setPlayImageVisible(mediaReview.content.videoUrl != null)
+        fun onBind(media: Media) {
+            mediaView.loadImage(media.photoUrl)
+            mediaView.setPlayImageVisible(media.videoUrl != null)
             mediaView.setListener(object : MediaView.Listener {
                 override fun playVideo() {
 
