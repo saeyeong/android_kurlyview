@@ -4,35 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout="androidx.appcompat.widget.LinearLayoutCompat">
+    tools:layout="androidx.appcompat.widget.ConstraintLayout">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/backImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="12dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/closeImageView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="12dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_baseline_close_24" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_weight="1"
-        android:text="[스윗밸런스] 오늘의 샐러드 8종 (리뉴얼)"
-        android:textStyle="bold"
-        android:maxLines="1"
         android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
         android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cartImageView"
+        app:layout_constraintStart_toEndOf="@id/closeImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_goneMarginEnd="46dp"
         tools:text="컬리뷰컬리" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/cartImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|center"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="12dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_baseline_shopping_cart_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </merge>
