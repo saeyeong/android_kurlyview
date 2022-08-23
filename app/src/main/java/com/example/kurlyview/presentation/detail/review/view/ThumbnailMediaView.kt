@@ -1,4 +1,4 @@
-package com.example.kurlyview.presentation.media.view
+package com.example.kurlyview.presentation.detail.review.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
-import com.example.kurlyview.databinding.ViewMediaBinding
+import com.example.kurlyview.databinding.ViewThumbnailMediaBinding
 
-class MediaView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) : ConstraintLayout(context, attrs, defStyle) {
-    private val viewBinding = ViewMediaBinding.inflate(LayoutInflater.from(context), this)
+class ThumbnailMediaView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) : ConstraintLayout(context, attrs, defStyle) {
+    private val viewBinding = ViewThumbnailMediaBinding.inflate(LayoutInflater.from(context), this)
 
     interface Listener {
         fun onClick()
@@ -19,13 +19,6 @@ class MediaView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     init {
         viewBinding.reviewImageView.setOnClickListener {
             listener?.onClick()
-        }
-        viewBinding.playImageView.setOnClickListener {
-            viewBinding.videoView.isVisible = true
-        }
-
-        viewBinding.videoView.setOnPreparedListener { mediaPlayer ->
-            mediaPlayer.start()
         }
     }
 
@@ -41,12 +34,5 @@ class MediaView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     fun setListener(listener: Listener) {
         this.listener = listener
-    }
-
-    fun setVideo(url: String?) {
-        viewBinding.videoView.isVisible = false
-        url?.let {
-            viewBinding.videoView.setVideoPath(url)
-        }
     }
 }

@@ -25,7 +25,7 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding>() {
 
     private fun initView() {
         latestMediaAdapter.setListener(object : ThumbnailMediaAdapter.Listener {
-            override fun playVideo() {
+            override fun onClick() {
                 val intent = MediaActivity.newInstance(requireContext(), getTestData())
                 startActivity(intent)
             }
@@ -39,7 +39,11 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding>() {
 
     private fun getTestData(): ArrayList<Media> {
         val media = arrayListOf<Media>()
-        for(i in 0..10) {
+        media.add(Media(
+            photoUrl = "https://user-images.githubusercontent.com/57159843/185928438-372a7282-c6d3-4955-aa8d-64209af745b1.jpeg",
+            videoUrl = "https://d1qahxl3037dik.cloudfront.net/output/video1/Default/MP4/video1.mp4"
+        ))
+        for(i in 0..3) {
             media.add(Media(
                 photoUrl = "https://user-images.githubusercontent.com/57159843/185928438-372a7282-c6d3-4955-aa8d-64209af745b1.jpeg",
                 videoUrl = null

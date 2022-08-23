@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kurlyview.domain.Media
-import com.example.kurlyview.presentation.media.view.MediaView
 import com.example.kurlyview.presentation.utils.dpToPx
 
 class ThumbnailMediaAdapter: ListAdapter<Media, ThumbnailMediaAdapter.MediaViewHolder>(
@@ -22,7 +21,7 @@ class ThumbnailMediaAdapter: ListAdapter<Media, ThumbnailMediaAdapter.MediaViewH
 ) {
 
     interface Listener {
-        fun playVideo()
+        fun onClick()
     }
     private var listener: Listener? = null
 
@@ -31,14 +30,14 @@ class ThumbnailMediaAdapter: ListAdapter<Media, ThumbnailMediaAdapter.MediaViewH
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaViewHolder {
-        return MediaViewHolder(MediaView(parent.context).apply {
+        return MediaViewHolder(ThumbnailMediaView(parent.context).apply {
             val size = context.dpToPx(100f).toInt()
             layoutParams = RecyclerView.LayoutParams(size, size).apply {
                 marginEnd = context.dpToPx(10f).toInt()
             }
-            this.setListener(object : MediaView.Listener {
-                override fun playVideo() {
-                    listener?.playVideo()
+            this.setListener(object : ThumbnailMediaView.Listener {
+                override fun onClick() {
+                    listener?.onClick()
                 }
             })
         })
@@ -48,10 +47,10 @@ class ThumbnailMediaAdapter: ListAdapter<Media, ThumbnailMediaAdapter.MediaViewH
         holder.onBind(getItem(position))
     }
 
-    class MediaViewHolder(private val mediaView: MediaView): RecyclerView.ViewHolder(mediaView) {
+    class MediaViewHolder(private val thumbnailMediaView: ThumbnailMediaView): RecyclerView.ViewHolder(thumbnailMediaView) {
         fun onBind(media: Media) {
-            mediaView.loadImage(media.photoUrl)
-            mediaView.setPlayImageVisible(media.videoUrl != null)
+            thumbnailMediaView.loadImage(media.photoUrl)
+            thumbnailMediaView.setPlayImageVisible(media.videoUrl != null)
         }
     }
 }

@@ -19,23 +19,10 @@ class MediaAdapter: ListAdapter<Media, MediaAdapter.MediaViewHolder>(
     }
 ) {
 
-    interface Listener {
-        fun playVideo()
-    }
-    private var listener: Listener? = null
-
-    fun setListener(listener: Listener) {
-        this.listener = listener
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaViewHolder {
         return MediaViewHolder(MediaView(parent.context).apply {
             layoutParams = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-            this.setListener(object : MediaView.Listener {
-                override fun playVideo() {
-                    listener?.playVideo()
-                }
-            })
+
         })
     }
 
@@ -47,6 +34,7 @@ class MediaAdapter: ListAdapter<Media, MediaAdapter.MediaViewHolder>(
         fun onBind(media: Media) {
             mediaView.loadImage(media.photoUrl)
             mediaView.setPlayImageVisible(media.videoUrl != null)
+            mediaView.setVideo(media.videoUrl)
         }
     }
 }

@@ -19,10 +19,4 @@
         android:visibility="gone"
         app:srcCompat="@drawable/ic_baseline_play_arrow_24"/>
 
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"/>
-
 </merge>
