@@ -14,7 +14,7 @@
         tools:text="리뷰 제목" />
 
     <TextView
-        android:id="@+id/authorTextView"
+        android:id="@+id/writerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/authorTextView"
+        app:layout_constraintStart_toEndOf="@+id/writerTextView"
         app:layout_constraintTop_toBottomOf="@id/reviewTitleTextView"
         tools:text="2022/01/03" />
 
@@ -39,7 +39,7 @@
         android:layout_marginTop="20dp"
         android:visibility="gone"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/authorTextView"
+        app:layout_constraintTop_toBottomOf="@id/writerTextView"
         tools:background="@mipmap/ic_launcher"
         tools:visibility="visible" />
 

@@ -9,12 +9,13 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.kurlyview.databinding.FragmentReviewBinding
 import com.example.kurlyview.domain.Media
 import com.example.kurlyview.presentation.base.BaseFragment
+import com.example.kurlyview.presentation.detail.review.view.ReviewAdapter
 import com.example.kurlyview.presentation.detail.review.view.ThumbnailMediaAdapter
 import com.example.kurlyview.presentation.media.MediaActivity
 
 class ReviewFragment : BaseFragment<FragmentReviewBinding, ReviewViewModel>() {
-    private val latestMediaAdapter = ThumbnailMediaAdapter()
 
+    private val reviewAdapter = ReviewAdapter()
     override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentReviewBinding {
         return FragmentReviewBinding.inflate(inflater, container, false)
     }
@@ -26,17 +27,14 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding, ReviewViewModel>() {
     }
 
     private fun initView() {
-        latestMediaAdapter.setListener(object : ThumbnailMediaAdapter.Listener {
-            override fun onClick() {
+        reviewAdapter.setListener(object : ReviewAdapter.Listener {
+            override fun onClickMedia(id: Int) {
                 val intent = MediaActivity.newInstance(requireContext(), getTestData())
                 startActivity(intent)
             }
         })
+        viewBinding.recyclerView.adapter = reviewAdapter
 
-        viewBinding.latestMediaRecyclerView.adapter = latestMediaAdapter
-
-
-        latestMediaAdapter.submitList(getTestData())
     }
 
     private fun getTestData(): ArrayList<Media> {

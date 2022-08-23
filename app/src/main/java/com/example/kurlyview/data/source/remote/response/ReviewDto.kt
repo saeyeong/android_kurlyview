@@ -3,6 +3,7 @@ package com.example.kurlyview.data.source.remote.response
 import com.example.kurlyview.domain.*
 
 class ReviewDto {
+    var id: Int? = null
     var title: String? = null
     var description: String? = null
     var content: MediaDto? = null
@@ -14,6 +15,7 @@ class ReviewDto {
 fun ReviewDto.toEntity(): Review? {
     return when {
         recipe != null -> RecipeReview(
+            id = this.id ?: return null,
             title = this.title ?: return null,
             description = this.description ?: return null,
             createdAt = this.createdAt ?: return null,
@@ -25,6 +27,7 @@ fun ReviewDto.toEntity(): Review? {
             relatedProducts = this.recipe?.relatedProducts?.mapNotNull { it.toEntity() } ?: return null
         )
         content != null -> MediaReview(
+            id = this.id ?: return null,
             title = this.title ?: return null,
             description = this.description ?: return null,
             createdAt = this.createdAt ?: return null,
@@ -32,6 +35,7 @@ fun ReviewDto.toEntity(): Review? {
             content = this.content?.toEntity() ?: return null
         )
         else -> TextReview(
+            id = this.id ?: return null,
             title = this.title ?: return null,
             description = this.description ?: return null,
             createdAt = this.createdAt ?: return null,
