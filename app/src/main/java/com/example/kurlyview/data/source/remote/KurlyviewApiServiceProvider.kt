@@ -1,5 +1,6 @@
-package com.example.kurlyview.data.source
+package com.example.kurlyview.data.source.remote
 
+import com.example.kurlyview.data.source.PreferencesRepository
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -34,6 +35,11 @@ object KurlyviewApiServiceProvider {
     private fun createOkHttpClient(): OkHttpClient {
 
         val builder = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val requestBuilder = chain.request().newBuilder()
+                requestBuilder.addHeader("X-AUTH-TOKEN", PreferencesRepository.getUserToken())
+                chain.proceed(requestBuilder.build())
+            }
             .addInterceptor(HttpLoggingInterceptor { printBodyLog(it) }.apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })

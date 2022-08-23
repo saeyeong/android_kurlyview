@@ -1,11 +1,16 @@
-package com.example.kurlyview.data.source
+package com.example.kurlyview.data.source.remote
 
-import com.example.kurlyview.data.source.response.ProductDto
-import com.example.kurlyview.data.source.response.ProductReviewsDto
+import com.example.kurlyview.data.source.remote.response.LoginDto
+import com.example.kurlyview.data.source.remote.response.ProductDto
+import com.example.kurlyview.data.source.remote.response.ProductReviewsDto
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface KurlyviewApiService {
+
+    @GET("v1/login")
+    suspend fun login(@Query("uuid") uuid: String): LoginDto
 
     @GET("v1/product/{productId}")
     suspend fun getProduct(@Path("productId") productId: Int): ProductDto

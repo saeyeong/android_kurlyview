@@ -1,4 +1,4 @@
-package com.example.kurlyview.data.source.response
+package com.example.kurlyview.data.source.remote.response
 
 import com.example.kurlyview.domain.*
 
