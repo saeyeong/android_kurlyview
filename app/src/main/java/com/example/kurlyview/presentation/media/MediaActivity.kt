@@ -9,12 +9,12 @@ import com.example.kurlyview.domain.Media
 import com.example.kurlyview.presentation.base.BaseActivity
 import com.example.kurlyview.presentation.media.view.MediaAdapter
 
-class MediaActivity : BaseActivity<ActivityMediaBinding>() {
+class MediaActivity : BaseActivity<ActivityMediaBinding, MediaViewModel>() {
     companion object {
         private const val INTENT_IMAGE_URL = "imageUrl"
 
-        fun newInstance(context: Context, media: Array<Media>): Intent {
-            return Intent(context, MediaActivity::class.java).putExtra(INTENT_IMAGE_URL, media)
+        fun newInstance(context: Context, media: ArrayList<Media>): Intent {
+            return Intent(context, MediaActivity::class.java).putParcelableArrayListExtra(INTENT_IMAGE_URL, media)
         }
     }
 
@@ -22,16 +22,15 @@ class MediaActivity : BaseActivity<ActivityMediaBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        onIntent(intent)
         initView()
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
+    private fun onIntent(intent: Intent) {
 
-        val mediaArray = intent?.getParcelableArrayListExtra<Media>(INTENT_IMAGE_URL)
+        val mediaArray = intent.getParcelableArrayListExtra<Media>(INTENT_IMAGE_URL)
         if (mediaArray != null) {
-            adapter.submitList(mediaArray.toList())
+            adapter.submitList(mediaArray)
         } else {
             finish()
         }
@@ -42,6 +41,6 @@ class MediaActivity : BaseActivity<ActivityMediaBinding>() {
     }
 
     private fun initView() {
-
+        viewBinding.viewPager.adapter = this.adapter
     }
 }

@@ -6,7 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.kurlyview.presentation.detail.HelpFragment
 import com.example.kurlyview.presentation.detail.InfoFragment
 import com.example.kurlyview.presentation.detail.ProductFragment
-import com.example.kurlyview.presentation.detail.ReviewFragment
+import com.example.kurlyview.presentation.detail.review.ReviewFragment
 
 class DetailPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity) {
     companion object {
