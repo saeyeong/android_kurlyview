@@ -14,22 +14,13 @@ class DetailViewModel: ViewModel() {
     val product: LiveData<Product> get() = _product
 
     init {
-//        getProduct()
-//        getReview()
+        getProduct()
     }
 
     private fun getProduct() {
         viewModelScope.launch {
             ReviewRepository.getProduct(1).collect {
                 _product.value = it
-            }
-        }
-    }
-
-    private fun getReview() {
-        viewModelScope.launch {
-            ReviewRepository.getReview(1).collect {
-
             }
         }
     }

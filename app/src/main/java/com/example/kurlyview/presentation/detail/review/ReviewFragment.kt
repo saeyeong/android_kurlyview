@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 import com.example.kurlyview.databinding.FragmentReviewBinding
 import com.example.kurlyview.domain.Media
 import com.example.kurlyview.presentation.base.BaseFragment
 import com.example.kurlyview.presentation.detail.review.view.ThumbnailMediaAdapter
 import com.example.kurlyview.presentation.media.MediaActivity
 
-class ReviewFragment : BaseFragment<FragmentReviewBinding>() {
+class ReviewFragment : BaseFragment<FragmentReviewBinding, ReviewViewModel>() {
     private val latestMediaAdapter = ThumbnailMediaAdapter()
 
     override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentReviewBinding {
