@@ -12,7 +12,7 @@ import timber.log.Timber
 
 object KurlyviewApiServiceProvider {
 
-    private const val API_SERVER_URL = ""
+    private const val API_SERVER_URL = "http://ec2-15-164-230-224.ap-northeast-2.compute.amazonaws.com:9090/"
 
     private var apiService = createApiService()
     private lateinit var retrofit: Retrofit

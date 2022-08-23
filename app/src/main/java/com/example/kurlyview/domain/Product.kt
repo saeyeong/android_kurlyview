@@ -1,7 +1,7 @@
 package com.example.kurlyview.domain
 
 data class Product(
-    val name: String,
-    val imageUrl: String,
+    val title: String,
+    val urlList: List<String>,
     val price: Int
 )
