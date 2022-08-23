@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp">
+
+    <TextView
+        android:id="@+id/goReviewTextView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_rectangle_stroke_r6"
+        android:gravity="center"
+        android:text="후기 쓰기"
+        android:textSize="18dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/purchaseSatisfactionTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="구매 만족도"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goReviewTextView" />
+
+    <TextView
+        android:id="@+id/purchaseSatisfactionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/purchaseSatisfactionTitleTextView"
+        app:layout_constraintTop_toTopOf="@id/purchaseSatisfactionTitleTextView"
+        tools:text="만족" />
+
+    <TextView
+        android:id="@+id/mediaReviewTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="포토 &amp; 영상 리뷰"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/purchaseSatisfactionTitleTextView" />
+
+    <TextView
+        android:id="@+id/goAlbumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="전체보기"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/mediaReviewTitleTextView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/latestMediaRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/mediaReviewTitleTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
