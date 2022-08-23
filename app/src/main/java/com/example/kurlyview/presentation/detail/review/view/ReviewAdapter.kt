@@ -72,10 +72,10 @@ class ReviewAdapter: ListAdapter<ReviewUiState, RecyclerView.ViewHolder>(
 
     class ReviewViewHolder(private val viewBinding: ViewReviewBinding): RecyclerView.ViewHolder(viewBinding.root) {
         fun onBind(review: Review) {
-
+            viewBinding.reviewTitleTextView.text = review.title
             viewBinding.writerTextView.text = review.writer
-            viewBinding.createdTextView.text = review.createdAt
-            viewBinding.reviewDescriptionTextView.text = review.description
+            viewBinding.createdTextView.text = review.createDt
+            viewBinding.reviewDescriptionTextView.text = review.body
             viewBinding.viewPager.isVisible = false
             when(review) {
                 is RecipeReview -> {

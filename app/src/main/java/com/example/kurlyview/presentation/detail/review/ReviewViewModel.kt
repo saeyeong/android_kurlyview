@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 class ReviewViewModel: ViewModel() {
 
     init {
-        getReview()
+//        getReview()
     }
 
     private fun getReview() {

@@ -1,4 +1,4 @@
-package com.example.kurlyview.data.source
+package com.example.kurlyview.data
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

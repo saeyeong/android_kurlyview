@@ -1,6 +1,6 @@
 package com.example.kurlyview.data.source.remote
 
-import com.example.kurlyview.data.source.PreferencesRepository
+import com.example.kurlyview.data.PreferencesRepository
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

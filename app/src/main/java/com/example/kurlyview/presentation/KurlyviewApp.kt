@@ -2,7 +2,7 @@ package com.example.kurlyview.presentation
 
 import android.app.Application
 import com.example.kurlyview.data.ReviewRepository
-import com.example.kurlyview.data.source.PreferencesRepository
+import com.example.kurlyview.data.PreferencesRepository
 import com.example.kurlyview.data.source.local.KurlyviewDataStore
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber

@@ -5,6 +5,7 @@ import com.example.kurlyview.data.source.remote.response.LoginDto
 import com.example.kurlyview.data.source.remote.response.toEntity
 import com.example.kurlyview.domain.Product
 import com.example.kurlyview.domain.ProductReviews
+import com.example.kurlyview.domain.Review
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -23,9 +24,9 @@ object ReviewRepository {
         }
     }
 
-    suspend fun getReview(productId: Int): Flow<ProductReviews> {
+    suspend fun getReview(reviewId: Int): Flow<List<Review>> {
         return flow {
-            service.getReview(productId).toEntity()
+            service.getReview(reviewId).mapNotNull { it.toEntity() }.let { emit(it) }
         }
     }
 }
