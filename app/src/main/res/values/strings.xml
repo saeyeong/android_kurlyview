@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">kurlyview</string>
+
+    <string name="buy">구매하기</string>
 </resources>

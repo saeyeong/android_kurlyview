@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="KulyviewToolbar">
+        <attr name="title" format="string" />
+        <attr name="useBack" format="boolean" />
+        <attr name="useClose" format="boolean" />
+        <attr name="useCart" format="boolean" />
+    </declare-styleable>
+
+</resources>
