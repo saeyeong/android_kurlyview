@@ -6,5 +6,6 @@ data class MediaReview(
     override val body: String,
     override val createDt: String,
     override val writer: String,
+    val thumbnail: String,
     val url: List<String>
 ): Review

@@ -21,6 +21,9 @@
             android:name=".presentation.media.MediaActivity"
             android:exported="false" />
         <activity
+            android:name=".presentation.album.AlbumActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.detail.DetailActivity"
             android:exported="true">
             <intent-filter>

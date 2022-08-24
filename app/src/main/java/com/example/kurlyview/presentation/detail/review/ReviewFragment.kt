@@ -6,16 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.paging.PagingData
 import com.example.kurlyview.databinding.FragmentReviewBinding
 import com.example.kurlyview.domain.Media
 import com.example.kurlyview.domain.Review
 import com.example.kurlyview.domain.TextReview
+import com.example.kurlyview.presentation.album.AlbumActivity
 import com.example.kurlyview.presentation.base.BaseFragment
 import com.example.kurlyview.presentation.detail.review.view.ReviewAdapter
 import com.example.kurlyview.presentation.detail.review.view.ReviewHeaderUiState
 import com.example.kurlyview.presentation.detail.review.view.ReviewUiState
 import com.example.kurlyview.presentation.detail.review.view.ThumbnailMediaAdapter
 import com.example.kurlyview.presentation.media.MediaActivity
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 
 class ReviewFragment : BaseFragment<FragmentReviewBinding, ReviewViewModel>() {
 
@@ -28,79 +36,44 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding, ReviewViewModel>() {
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        initViewModel()
     }
 
     private fun initView() {
-        reviewAdapter.setListener(object : ReviewAdapter.Listener {
-            override fun onClickMedia(id: Int) {
-                val intent = MediaActivity.newInstance(requireContext(), id)
-                startActivity(intent)
-            }
-        })
-        reviewAdapter.submitList(getTestData())
 
         viewBinding.recyclerView.adapter = reviewAdapter
 
     }
 
-    private fun getTestData(): ArrayList<ReviewUiState> {
-        val data = arrayListOf<ReviewUiState>()
-        val media = getTestData2()
+    private fun initViewModel() {
+        viewModel.reviewUiState.observe(viewLifecycleOwner) {
 
-        data.add(
-            ReviewUiState(
-                header = ReviewHeaderUiState(
-                    purchaseSatisfaction = "test",
-                    mediaReviewThumbnail = media,
-                    filter = "sss",
-                    order = "assda"
-                )
-            )
-        )
+            reviewAdapter.setListener(object : ReviewAdapter.Listener {
+                override fun onClickGoAlbum() {
+                    val intent = AlbumActivity.newInstance(
+                        requireContext(),
+                        it.header?.productId ?: return
+                    )
+                    startActivity(intent)
+                }
 
-        data.add(
-            ReviewUiState(
-                header = null,
-                review = TextReview(
-                    9,
-                    "i",
-                    "h",
-                    "jk",
-                    "jjj"
-                )
-            )
-        )
+                override fun onClickMedia(id: Int) {
+                    val intent = MediaActivity.newInstance(requireContext(), id)
+                    startActivity(intent)
+                }
+            })
 
-        data.add(
-            ReviewUiState(
-                header = null,
-                review = TextReview(
-                    9,
-                    "i",
-                    "h",
-                    "jk",
-                    "jjj"
-                )
-            )
-        )
-        return data
-    }
 
-    private fun getTestData2(): ArrayList<Media> {
-        val media = arrayListOf<Media>()
 
-        media.add(
-            Media(
-                photoUrl = "https://user-images.githubusercontent.com/57159843/185928438-372a7282-c6d3-4955-aa8d-64209af745b1.jpeg",
-                videoUrl = "https://d1qahxl3037dik.cloudfront.net/output/video1/Default/MP4/video1.mp4"
-            ))
-        for(i in 0..3) {
-            media.add(Media(
-                photoUrl = "https://user-images.githubusercontent.com/57159843/185928438-372a7282-c6d3-4955-aa8d-64209af745b1.jpeg",
-                videoUrl = null
-            ))
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.pagingDataFlow.collectLatest {
+                        reviewAdapter.submitData(it)
+                    }
+                }
+            }
         }
-        return media
+
     }
 
 }

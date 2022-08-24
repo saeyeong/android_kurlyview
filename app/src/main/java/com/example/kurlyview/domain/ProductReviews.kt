@@ -1,7 +1,8 @@
 package com.example.kurlyview.domain
 
+
 data class ProductReviews(
-    val bestReviews: List<Review>,
-    val mediaReviews: List<Review>,
-    val orderingReviews: OrderingReviews
+    val id: Int,
+    val score: String,
+    val mediaReviews: List<ReviewThumbnail>,
 )

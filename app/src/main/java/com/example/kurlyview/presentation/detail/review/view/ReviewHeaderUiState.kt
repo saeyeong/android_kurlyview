@@ -1,10 +1,11 @@
 package com.example.kurlyview.presentation.detail.review.view
 
-import com.example.kurlyview.domain.Media
+import com.example.kurlyview.domain.ReviewThumbnail
 
 data class ReviewHeaderUiState(
-    val purchaseSatisfaction: String,
-    val mediaReviewThumbnail: List<Media>,
+    val productId: Int,
+    val score: String,
+    val reviewThumbnail: List<ReviewThumbnail>,
     val filter: String,
     val order: String
 )

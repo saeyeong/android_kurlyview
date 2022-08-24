@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@id/goReviewTextView" />
 
     <TextView
-        android:id="@+id/purchaseSatisfactionTextView"
+        android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

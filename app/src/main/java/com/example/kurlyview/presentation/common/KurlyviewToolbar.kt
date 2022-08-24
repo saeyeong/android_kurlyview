@@ -39,6 +39,11 @@ class KurlyviewToolbar @JvmOverloads constructor(context: Context, attrs: Attrib
                     context.finish()
                 }
             }
+            viewBinding.backImageView.setOnClickListener {
+                if (context is Activity) {
+                    context.finish()
+                }
+            }
         }
     }
 

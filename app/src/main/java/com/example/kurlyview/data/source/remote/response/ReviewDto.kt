@@ -6,6 +6,7 @@ class ReviewDto {
     var id: Int? = null
     var title: String? = null
     var body: String? = null
+    var thumbnail: String? = null
     var url: List<String>? = null
     var recipe: RecipeDto? = null
     var createDt: String? = null
@@ -32,6 +33,7 @@ fun ReviewDto.toEntity(): Review? {
             body = this.body ?: return null,
             createDt = this.createDt ?: return null,
             writer = this.writer ?: return null,
+            thumbnail = this.thumbnail ?: "",
             url = this.url?.mapNotNull { it } ?: return null,
         )
         else -> TextReview(

@@ -5,15 +5,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kurlyview.domain.Media
+import com.example.kurlyview.domain.MediaReview
+import com.example.kurlyview.domain.ReviewThumbnail
 import com.example.kurlyview.presentation.utils.dpToPx
 
-class ThumbnailMediaAdapter: ListAdapter<Media, ThumbnailMediaAdapter.MediaViewHolder>(
-    object : DiffUtil.ItemCallback<Media>() {
-        override fun areItemsTheSame(oldItem: Media, newItem: Media): Boolean {
-            return oldItem.photoUrl == newItem.photoUrl
+class ThumbnailMediaAdapter: ListAdapter<ReviewThumbnail, ThumbnailMediaAdapter.MediaViewHolder>(
+    object : DiffUtil.ItemCallback<ReviewThumbnail>() {
+        override fun areItemsTheSame(oldItem: ReviewThumbnail, newItem: ReviewThumbnail): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Media, newItem: Media): Boolean {
+        override fun areContentsTheSame(oldItem: ReviewThumbnail, newItem: ReviewThumbnail): Boolean {
             return oldItem == newItem
         }
 
@@ -48,9 +50,11 @@ class ThumbnailMediaAdapter: ListAdapter<Media, ThumbnailMediaAdapter.MediaViewH
     }
 
     class MediaViewHolder(private val thumbnailMediaView: ThumbnailMediaView): RecyclerView.ViewHolder(thumbnailMediaView) {
-        fun onBind(media: Media) {
-            thumbnailMediaView.loadImage(media.photoUrl)
-            thumbnailMediaView.setPlayImageVisible(media.videoUrl != null)
+        fun onBind(reviewThumbnail: ReviewThumbnail) {
+            val isVideo = reviewThumbnail.thumbnail.isNotEmpty()
+            val url = reviewThumbnail.thumbnail.takeIf { isVideo } ?: reviewThumbnail.url
+            thumbnailMediaView.loadImage(url)
+            thumbnailMediaView.setPlayImageVisible(isVideo)
         }
     }
 }
